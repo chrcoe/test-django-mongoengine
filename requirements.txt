@@ -1,0 +1,2 @@
+Django
+mongoengine==0.9.0
