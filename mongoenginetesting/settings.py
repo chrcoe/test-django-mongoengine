@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'mongoenginetesting.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': '',
-    }
-}
+#  DATABASES = {
+    #  'default': {
+        #  'ENGINE': '',
+    #  }
+#  }
 
 
 # Password validation
@@ -127,26 +127,6 @@ STATIC_URL = '/static/'
 
 SESSION_ENGINE = 'mongoengine.django.sessions'
 
-# this is a test DB so i don't really care about username:passwd etc
-_MONGODB_USER = 'jdoe'
-_MONGODB_PASSWD = 'stupid-password'
-_MONGODB_HOST = 'localhost'
-_MONGODB_NAME = 'TESTDB'
-_MONGODB_DATABASE_HOST = \
-        'mongodb://{0}:{1}@{2}:27017/{3}'.format(
-        _MONGODB_USER,
-        _MONGODB_PASSWD,
-        _MONGODB_HOST,
-        _MONGODB_NAME
-    )
+MONGO_URI = 'mongodb://localhost:27017/local'
 
-_MONGODB_DATABASE_HOST_NONE = \
-        'mongodb://{0}:27017/{1}'.format(
-        _MONGODB_HOST,
-        _MONGODB_NAME
-    )
-
-print(_MONGODB_DATABASE_HOST, _MONGODB_DATABASE_HOST_NONE)
-
-
-mongoengine.connect(_MONGODB_NAME, host=_MONGODB_DATABASE_HOST_NONE)
+mongoengine.connect(db=None, host=MONGO_URI)
